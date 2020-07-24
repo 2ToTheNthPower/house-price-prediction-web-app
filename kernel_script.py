@@ -141,7 +141,7 @@ if train_button:
     x_train_top_ten = pd.DataFrame(x_train_top_ten, columns=new_features)
 
     st.dataframe(x_train_top_ten)
-
+    st.subheader("Please be patient during training.  The training process can take up to 10 minutes.")
     with st.spinner(text="Training predictive model on dataset..."):
 
         model = lgb.LGBMRegressor()
@@ -165,6 +165,7 @@ if train_button:
     start_predictions = st.button(label="Predict House Price")
 
     if start_predictions:
+        st.subheader("Please be patient.  The prediction process may take up to 5 minutes.")
         predict_data = np.array([lotArea, masArea, basFinArea, basSecFinArea, basUnfArea, secFloorArea, lowQltyFinArea, livingArea, poolArea, miscVal])
         predict_data = predict_data.reshape(1, -1)
         prediction = model.predict(predict_data)
